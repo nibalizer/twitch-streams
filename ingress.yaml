@@ -1,0 +1,14 @@
+ apiVersion: extensions/v1beta1
+ kind: Ingress
+ metadata:
+   name: wordpressingress
+ spec:
+   rules:
+   - host: wordpress.nibalizer.net
+     http:
+       paths:
+       - path: /
+         backend:
+           serviceName: wordpress
+           servicePort: 80
+
