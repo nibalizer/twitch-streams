@@ -1,0 +1,59 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress
+spec:
+  selector:
+    app: wordpress
+  ports:
+    - protocol: TCP
+      port: 80
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: wordpress-data-1
+  labels:
+    app: wordpress
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources: 
+    requests:
+      storage: 20Gi
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: wordpress
+spec:
+  selector:
+    matchLabels:
+      app: wordpress
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      containers:
+      - image: "wordpress:latest"
+        name: wordpress
+        imagePullPolicy: Always
+        env:
+        - name: WORDPRESS_DB_PASSWORD
+          value: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        - name: WORDPRESS_DB_HOST
+          value: "wordpress-mysql:3306"
+        ports:
+        - containerPort: 80
+          name: mysql
+#        volumeMounts:
+#        - mountPath: /var/www/html
+#          name: wordpress-data-1
+      restartPolicy: Always
+#      volumes:
+#      - name: wordpress-data-1
+#        persistentVolumeClaim:
+#          claimName: wordpress-data-1
