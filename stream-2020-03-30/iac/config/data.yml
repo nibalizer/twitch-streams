@@ -1,0 +1,13 @@
+baseserver:
+    packages:
+        - htop
+php5server:
+    include: 
+        - baseserver
+    packages:
+        - php-cgi-bin-5
+php6server:
+    include: 
+        - baseserver
+    packages:
+        - php-cgi-bin-6
