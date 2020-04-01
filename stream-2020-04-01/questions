@@ -1,0 +1,39 @@
+BroadcasterIBMDeveloper: https://www.youtube.com/watch?v=PmylEqp1d1Y
+LinkSlumps: how big a jump is it for me to take k8 from local to the cloud?
+LinkSlumps: what IP do I put in the hosts file to run a dns name locally?
+LinkSlumps: is it the ingress service I need?
+LinkSlumps: the website like the ibm site?
+martinstuessy: have you tried vim link?
+dreasertwitch: how do you make the twitch notification works with Linux?
+LinkSlumps: is mysql ibm?
+j
+mysql -> sun -> oracle -> sadness
+
+martinstuessy: when was this?
+martinstuessy: what's your take on mono repos btw?
+martinstuessy: ftpsync?
+LinkSlumps: yeah what extension?
+LinkSlumps: tf providers?
+martinstuessy: with what?
+martinstuessy: wizdals and protobufs?
+martinstuessy: how did you bind the repos together?
+martinstuessy: like a script to clone them all down?
+
+dreasertwitch: can I have your github please?
+
+LinkSlumps: I think IBM has an office in fredericton don't they?
+
+martinstuessy: which client do you think would be most likely to replace docker?
+* podman (from redhat)
+* rkt (failed to launch) *pour one out*
+* containerd
+* snap
+
+
+LinkSlumps: what is subtree?
+man git-subtree
+LinkSlumps: do the vs code extensions work with k8?
+LinkSlumps: anyone ever use the okteto extension?
+LinkSlumps: https://marketplace.visualstudio.com/items?itemName=ms-kubernetes-tools.vscode-kubernetes-tools
+martinstuessy: honestly i've learned so much in the last hour do you guys stream every day?
+martinstuessy: what kind of code are we talking here?
