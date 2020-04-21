@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: supertux-deployment
+  labels:
+    app: supertux
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: supertux
+  template:
+    metadata:
+      labels:
+        app: supertux
+    spec:
+      containers:
+      - name: supertux
+        image: dtcooper/tuxracer-web
+        command: ["/sbin/tini", "--", "/entrypoint.sh"]
+        imagePullPolicy: Always
+        env:
+        - name: PASSWORD
+          value: "arst"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: supertux
+  labels:
+    app: supertux
+spec:
+  ports:
+  - port: 3000
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: supertux
+---
+ apiVersion: networking.k8s.io/v1beta1
+ kind: Ingress
+ metadata:
+   name: myingress
+ spec:
+   rules:
+   - host: nibz-falco-test-2-5290c8c8e5797924dc1ad5d1b85b37c0-0000.us-east.containers.appdomain.cloud
+     http:
+       paths:
+       - path: /
+         backend:
+           serviceName: supertux
+           servicePort: 3000
