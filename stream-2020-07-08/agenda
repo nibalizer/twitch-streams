@@ -1,0 +1,83 @@
+# 2020-07-08
+
+## Summary
+
+- Ansible for initial system bring up
+- Ansible for falco install
+- Worked on grpc w/ python the rest of the time
+- Ansible Repo: https://github.com/nibalizer/ibmcloud-ansible
+
+## Announcements:
+
+- Call for code 
+- [x] Falco Helm Chart
+- [x] Falco gRPC unix socket in Helm Chart
+- [x] Falco python client w/ grpc
+
+## New Business:
+
+- Do Ansible for new system (briefly)
+- Set up manual testing system (falco on ubuntu)
+- Do manual testing of new grpc python client
+- Write some simple examples of client-py
+- Automated tests??
+
+## If there is time:
+
+- https://github.com/kubernetes/enhancements/blob/master/keps/sig-node/20190717-seccomp-ga.md
+
+## Commands
+
+
+```
+ansible-galaxy install juju4.falco
+ansible-galaxy install git+https://github.com/juju4/ansible-falco
+python -m grpc_tools.protoc -I../../protos --python_out=. --grpc_python_out=. ../../protos/helloworld.proto
+(venv) ubuntu@nibz-falco-dev:~$ ps -fe | grep falco
+root      3294 15201  0 Jul08 pts/3    00:00:00 tail -f /var/log/falco/falco.log
+root     12297     1  0 Jul08 ?        00:04:51 /usr/bin/falco --pidfile=/var/run/falco.pid
+```
+
+
+
+## Links
+
+- https://bintray.com/falcosecurity/deb-dev
+- https://callforcode.org/challenge/
+- https://dl.bintray.com/falcosecurity/
+- https://dl.bintray.com/falcosecurity/deb-dev/
+- https://docs.ansible.com/ansible/2.4/ansible-inventory.html
+- https://docs.ansible.com/ansible/latest/user_guide/become.html
+- https://falco.org/
+- https://falco.org/docs/installation/
+- https://falco.org/docs/installation/
+- https://galaxy.ansible.com/docs/using/installing.html
+- https://galaxy.ansible.com/juju4/falco
+- https://galaxy.ansible.com/search?deprecated=false&keywords=falco&order_by=-relevance&page=1
+- https://galaxy.ansible.com/willshersystems/sshd
+- https://github.com/falcosecurity/client-go/pull/45/files
+- https://github.com/falcosecurity/client-go/pull/45/files
+- https://github.com/falcosecurity/client-go/pulls?q=is%3Apr+is%3Aclosed
+- https://github.com/falcosecurity/client-py
+- https://github.com/falcosecurity/client-py/blob/master/falco/svc/output_pb2_grpc.py
+- https://github.com/falcosecurity/client-py/pull/36
+- https://github.com/falcosecurity/client-py/pull/36
+- https://github.com/falcosecurity/evolution
+- https://github.com/falcosecurity/falco/blob/master/falco.yaml
+- https://github.com/grpc/grpc/blob/v1.30.x/examples/python/route_guide/route_guide_resources.py
+- https://github.com/grpc/grpc/issues/9270
+- https://github.com/juju4/ansible-falco/tree/master/tasks
+- https://github.com/nibalizer/bluemix-ansible
+- https://github.com/nibalizer/client-py/tree/update_grpc
+- https://github.com/nibalizer/ibmcloud-ansible
+- https://github.com/willshersystems/ansible-sshd
+- https://grpc.github.io/grpc/python/grpc.html#grpc.local_channel_credentials
+- https://grpc.io/docs/languages/python/basics/
+- https://grpc.io/docs/what-is-grpc/core-concepts/
+- https://k3s.io/
+- https://kubernetes.io/docs/setup/learning-environment/kind/
+- https://kubernetes.io/docs/tasks/tools/install-minikube/
+- https://rancher.com/
+- https://realpython.com/introduction-to-python-generators/
+- https://www.ansible.com/
+- https://yaml.org/

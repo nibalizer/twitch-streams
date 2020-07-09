@@ -1,0 +1,5 @@
+---
+- hosts: falco-dev
+  become: yes
+  roles:
+    - role: ansible-falco

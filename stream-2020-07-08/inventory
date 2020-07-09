@@ -1,0 +1,2 @@
+[cloud]
+falco-dev ansible_ssh_user=ubuntu
