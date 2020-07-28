@@ -28,6 +28,11 @@
 
 ## Commands
 
+
+```bash
+git config --global init.defaultBranch main
+```
+
 Files heavily read:
 
 - https://github.com/falcosecurity/falco/blob/master/rules/k8s_audit_rules.yaml
