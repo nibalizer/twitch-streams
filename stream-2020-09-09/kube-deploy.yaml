@@ -1,0 +1,155 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lang-java
+  labels:
+    app: lang-java
+    stream: fourlang
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lang-java
+  template:
+    metadata:
+      labels:
+        app: lang-java
+    spec:
+      containers:
+      - name: lang-java
+        image: quay.io/nibalizer/lang-java
+        imagePullPolicy: Always
+        env:
+        - name: PASSWORD
+          value: "arst"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lang-js
+  labels:
+    app: lang-js
+    stream: fourlang
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lang-js
+  template:
+    metadata:
+      labels:
+        app: lang-js
+    spec:
+      containers:
+      - name: lang-js
+        image: quay.io/nibalizer/lang-js
+        imagePullPolicy: Always
+        env:
+        - name: PASSWORD
+          value: "arst"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lang-php
+  labels:
+    app: lang-php
+    stream: fourlang
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lang-php
+  template:
+    metadata:
+      labels:
+        app: lang-php
+    spec:
+      containers:
+      - name: lang-php
+        image: quay.io/nibalizer/lang-php
+        imagePullPolicy: Always
+        env:
+        - name: PASSWORD
+          value: "arst"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lang-python
+  labels:
+    app: lang-python
+    stream: fourlang
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lang-python
+  template:
+    metadata:
+      labels:
+        app: lang-python
+    spec:
+      containers:
+      - name: lang-python
+        image: quay.io/nibalizer/lang-python
+        imagePullPolicy: Always
+        env:
+        - name: PASSWORD
+          value: "arst"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lang-js
+  labels:
+    app: lang-js
+spec:
+  ports:
+  - port: 5000 
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: lang-js
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lang-php
+  labels:
+    app: lang-php
+spec:
+  ports:
+  - port: 5000 
+    protocol: TCP
+    targetPort: 8181
+  selector:
+    app: lang-php
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lang-python
+  labels:
+    app: lang-python
+spec:
+  ports:
+  - port: 5000 
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: lang-python
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lang-java
+  labels:
+    app: lang-java
+spec:
+  ports:
+  - port: 5000 
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: lang-java

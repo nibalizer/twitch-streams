@@ -1,0 +1,40 @@
+apiVersion: v1
+items:
+- apiVersion: extensions/v1beta1
+  kind: Ingress
+  metadata:
+    annotations:
+      ingress.bluemix.net/rewrite-path: serviceName=lang-java rewrite=/hello;serviceName=lang-php
+        rewrite=/;serviceName=lang-python rewrite=/;serviceName=lang-js rewrite=/
+    name: myingressresource
+    namespace: default
+  spec:
+    rules:
+    - host: <redacted>
+      http:
+        paths:
+        - backend:
+            serviceName: nodecg
+            servicePort: 80
+          path: /
+          pathType: ImplementationSpecific
+        - backend:
+            serviceName: lang-java
+            servicePort: 5000
+          path: /java
+          pathType: ImplementationSpecific
+        - backend:
+            serviceName: lang-js
+            servicePort: 5000
+          path: /js
+          pathType: ImplementationSpecific
+        - backend:
+            serviceName: lang-php
+            servicePort: 5000
+          path: /php
+          pathType: ImplementationSpecific
+        - backend:
+            serviceName: lang-python
+            servicePort: 5000
+          path: /python
+          pathType: ImplementationSpecific
